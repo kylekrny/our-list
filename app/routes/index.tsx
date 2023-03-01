@@ -28,46 +28,60 @@ export default function Index() {
       </svg>
       <div className="mx-auto max-w-7xl px-6 pt-10 pb-24 sm:pb-32 lg:flex lg:py-40 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl lg:flex-shrink-0 lg:pt-8">
-          <img
+          {/* <img
             className="h-11"
             src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
             alt="Your Company"
-          />
-          <div className="mt-24 sm:mt-32 lg:mt-16">
-            <a href="#" className="inline-flex space-x-6">
-              <span className="rounded-full bg-indigo-600/10 px-3 py-1 text-sm font-semibold leading-6 text-indigo-600 ring-1 ring-inset ring-indigo-600/10">
-                What's new
-              </span>
+          /> */}
+          <div className="mt-24 sm:mt-32 lg:mt-16 flex space-x-3">
+            <h3 className="text-4xl">OurList</h3>
+            <span className="rounded-full bg-indigo-600/10 px-4 py-2 text-sm font-semibold leading-6 text-indigo-600 ring-1 ring-inset ring-indigo-600/10">
+              Alpha
+            </span>
+            {/* <a href="#" className="inline-flex space-x-6">
               <span className="inline-flex items-center space-x-2 text-sm font-medium leading-6 text-gray-600">
-                <span>Just shipped v1.0</span>
+                <span>Alpha</span>
                 <ChevronRightIcon
                   className="h-5 w-5 text-gray-400"
                   aria-hidden="true"
                 />
               </span>
-            </a>
+            </a> */}
           </div>
           <h1 className="mt-10 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-            Deploy to the cloud with confidence
+            Bring your community together. Bring the best ideas to light.
           </h1>
           <p className="mt-6 text-lg leading-8 text-gray-600">
-            Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-            lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
-            fugiat aliqua.
+            By bringing everybody into the discussion, allows for the best ideas
+            to come to light. Everybody gets a vote and more importantly a
+            voice.
           </p>
-          <div className="mt-10 flex items-center gap-x-6">
-            <a
-              href="#"
-              className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            >
-              Get started
-            </a>
-            <a
-              href="#"
-              className="text-sm font-semibold leading-6 text-gray-900"
-            >
-              Learn more <span aria-hidden="true">→</span>
-            </a>
+          <div className="mt-10 bg-slate-100 shadow sm:rounded-lg drop-shadow-xl w-10/12">
+            <div className="px-3 py-4 sm:p-6">
+              <div className="flex items-center justify-between">
+                <div className="w-8/12">
+                  <label htmlFor="email" className="sr-only">
+                    List Name
+                  </label>
+                  <input
+                    type="text"
+                    name="list name"
+                    id="email"
+                    className="block pt-2 pb-2 pl-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    placeholder="Video Ideas"
+                  />
+                </div>
+                <button className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                  Create list
+                </button>
+                {/* <a
+                  href="#"
+                  className="text-sm font-semibold leading-6 text-gray-900"
+                  >
+                  Learn more <span aria-hidden="true">→</span>
+                </a> */}
+              </div>
+            </div>
           </div>
         </div>
         <div className="mx-auto mt-16 flex max-w-2xl sm:mt-24 lg:ml-10 lg:mt-0 lg:mr-0 lg:max-w-none lg:flex-none xl:ml-32">
