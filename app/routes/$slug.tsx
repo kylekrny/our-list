@@ -1,6 +1,7 @@
 import type { LoaderArgs } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
+import ListHeader from "~/components/ListHeader";
 
 export const loader = async ({ params }: LoaderArgs) => {
   return json({ slug: params.slug });
@@ -9,10 +10,8 @@ export const loader = async ({ params }: LoaderArgs) => {
 export default function ListSlug() {
   const { slug } = useLoaderData<typeof loader>();
   return (
-    <main className="mx-auto max-w-4xl">
-      <h1 className="my-6 border-b-2 text-center text-3xl">
-        Some List: {slug}
-      </h1>
-    </main>
+    <div className="container mx-auto sm:px-6 lg:px-8">
+      <ListHeader title={slug} />
+    </div>
   );
 }
