@@ -1,0 +1,60 @@
+import { ArrowUpIcon, ArrowDownIcon } from "@heroicons/react/20/solid";
+
+
+interface Tag {
+    id: string;
+    name: string;
+    color: string;
+}
+interface ListItem {
+    id: string;
+    title: string;
+    description: string;
+    votes: number;
+    tags?: Array<Tag>;
+}
+
+
+const numberFormatter = (number: number) => {
+  return new Intl.NumberFormat("en-US", { maximumSignificantDigits: 3 }).format(
+    number
+  );
+};
+
+export default function StackedListItem({listItem, idx}: {listItem: ListItem, idx: number}) {
+  return (
+          <li key={listItem.id}>
+            <div className="px-4 py-4 sm:px-6">
+              <div className="flex items-center justify-between">
+                <p className="truncate text-sm font-medium text-cyan-800">
+                  <span className="text-gray-500">#{idx + 1}</span>{" "}
+                  {listItem.title}
+                </p>
+                {/* <div className="ml-2 flex flex-shrink-0">
+                  <p className="inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800">
+                    {listItem.type}
+                  </p>
+                </div> */}
+              </div>
+              <div className="mt-2 sm:flex sm:justify-between">
+                <div className="sm:flex">
+                  <p className="text-sm text-gray-500">
+                    {listItem.description}
+                  </p>
+                </div>
+                <div className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
+                  <button>
+                    <ArrowUpIcon className="mr-1 h-5 w-5 flex-shrink-0 text-gray-400 hover:text-green-500" />
+                  </button>
+                  <p className="flex items-center text-sm text-gray-500">
+                    {numberFormatter(listItem.votes)}
+                  </p>
+                  <button>
+                    <ArrowDownIcon className=" ml-1 h-5 w-5 flex-shrink-0 text-gray-400 hover:text-rose-600" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </li>
+  );
+}
