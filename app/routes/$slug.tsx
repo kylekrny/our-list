@@ -2,6 +2,7 @@ import type { LoaderArgs } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import ListHeader from "~/components/ListHeader";
+import StackedList from "~/components/StackedList";
 
 export const loader = async ({ params }: LoaderArgs) => {
   return json({ slug: params.slug });
@@ -12,6 +13,7 @@ export default function ListSlug() {
   return (
     <div className="container mx-auto sm:px-6 lg:px-8">
       <ListHeader title={slug} />
+      <StackedList/>
     </div>
   );
 }
