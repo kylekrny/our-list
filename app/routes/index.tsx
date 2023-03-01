@@ -1,6 +1,22 @@
-import { ChevronRightIcon } from "@heroicons/react/20/solid";
+import type { ActionArgs } from "@remix-run/node";
+import { redirect } from "@remix-run/node";
+import { Form } from "@remix-run/react";
+import createList from "~/models/list.server";
+
+
+  export const action = async ({ request }: ActionArgs) => {
+    const formData = await request.formData();
+
+    const listName = formData.get("list_name");
+
+    const slug = await createList({ listName });
+
+    return redirect(`/${slug}`)
+
+  };
 
 export default function Index() {
+
   return (
     <div className="relative isolate overflow-hidden bg-white">
       <svg
@@ -58,20 +74,20 @@ export default function Index() {
           </p>
           <div className="mt-10 bg-slate-100 shadow sm:rounded-lg drop-shadow-xl w-10/12">
             <div className="px-3 py-4 sm:p-6">
-              <div className="flex items-center justify-between">
+              <Form method="post" className="flex items-center justify-between">
                 <div className="w-8/12">
-                  <label htmlFor="email" className="sr-only">
+                  <label htmlFor="list_name_input" className="sr-only">
                     List Name
                   </label>
                   <input
                     type="text"
-                    name="list name"
-                    id="email"
-                    className="block pt-2 pb-2 pl-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    name="list_name"
+                    id="list_name_input"
+                    className="block pt-2 pb-2 pl-2 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     placeholder="Video Ideas"
                   />
                 </div>
-                <button className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                <button type="submit" className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                   Create list
                 </button>
                 {/* <a
@@ -80,7 +96,7 @@ export default function Index() {
                   >
                   Learn more <span aria-hidden="true">→</span>
                 </a> */}
-              </div>
+              </Form>
             </div>
           </div>
         </div>
