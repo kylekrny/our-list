@@ -8,5 +8,5 @@ export const action = async ({ request }: ActionArgs) => {
 
     console.log(name, summary)
 
-    return null;
+    return {name};
 };

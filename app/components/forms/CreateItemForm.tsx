@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useFetcher } from "@remix-run/react";
 
 export default function CreateItemForm({setOpen}: {setOpen: Function}) {
@@ -9,6 +9,13 @@ export default function CreateItemForm({setOpen}: {setOpen: Function}) {
   const handleSummaryInput = (e) => {
     setSummaryValue(e.target.value);
   }
+
+  useEffect(() => {
+    if (fetcher.type === "done" && fetcher.data) {
+      setOpen();
+    }
+  }, [fetcher])
+  
 
   return (
     <fetcher.Form action="/list-item/create" method="post" className="space-y-8 divide-y divide-gray-200">
