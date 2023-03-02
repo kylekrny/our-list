@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { PlusIcon } from "@heroicons/react/20/solid";
 import Modal from "./Modal";
+import CreateItemForm from "./forms/CreateItemForm";
 interface List {
   title: any
 }
 
 export default function ListHeader({title}: List) {
-  const [createItemModalOpen, setCreateItemModalOpen] = useState(true);
+  const [createItemModalOpen, setCreateItemModalOpen] = useState(false);
 
   const toggleModal = () => {
     setCreateItemModalOpen(!createItemModalOpen);
@@ -39,7 +40,9 @@ export default function ListHeader({title}: List) {
             />
             Create Idea
           </button>
-          <Modal open={createItemModalOpen} setOpen={toggleModal}/>
+          <Modal open={createItemModalOpen} setOpen={toggleModal}>
+            <CreateItemForm setOpen={toggleModal}/>
+          </Modal>
         </span>
       </div>
     </div>

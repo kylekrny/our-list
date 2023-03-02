@@ -1,8 +1,9 @@
 
 import { useState } from "react";
-import { Form } from "@remix-run/react";
+import { useFetcher } from "@remix-run/react";
 
-export default function CreateItemForm() {
+export default function CreateItemForm({setOpen}: {setOpen: Function}) {
+  const fetcher = useFetcher();
   const [summaryValue, setSummaryValue] = useState("");
 
   const handleSummaryInput = (e) => {
@@ -10,7 +11,7 @@ export default function CreateItemForm() {
   }
 
   return (
-    <Form className="space-y-8 divide-y divide-gray-200">
+    <fetcher.Form action="/list-item/create" method="post" className="space-y-8 divide-y divide-gray-200">
       <div className="space-y-8 divide-y divide-gray-200">
         <div>
           <div>
@@ -75,6 +76,7 @@ export default function CreateItemForm() {
         <div className="flex justify-end">
           <button
             type="button"
+            onClick={setOpen}
             className="rounded-md bg-white py-2 px-3 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
           >
             Cancel
@@ -87,6 +89,6 @@ export default function CreateItemForm() {
           </button>
         </div>
       </div>
-    </Form>
+    </fetcher.Form>
   );
 }

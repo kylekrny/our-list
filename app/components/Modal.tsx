@@ -1,9 +1,7 @@
 import { Fragment} from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { CheckIcon } from "@heroicons/react/24/outline";
-import CreateItemForm from "./forms/CreateItemForm";
 
-export default function Modal({open, setOpen}: {open: boolean, setOpen: Function}) {
+export default function Modal({open, setOpen, children}: {open: boolean, setOpen: Function, children: any}) {
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -33,7 +31,7 @@ export default function Modal({open, setOpen}: {open: boolean, setOpen: Function
             >
               <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
                 <div>
-                  <CreateItemForm />
+                  {children}
                 </div>
               </Dialog.Panel>
             </Transition.Child>
