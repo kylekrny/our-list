@@ -3,10 +3,11 @@ import { PlusIcon } from "@heroicons/react/20/solid";
 import Modal from "./Modal";
 import CreateItemForm from "./forms/CreateItemForm";
 interface List {
-  title: any
+  title: string,
+  description: string,
 }
 
-export default function ListHeader({title}: List) {
+export default function ListHeader({list}: List) {
   const [createItemModalOpen, setCreateItemModalOpen] = useState(false);
 
   const toggleModal = () => {
@@ -17,13 +18,11 @@ export default function ListHeader({title}: List) {
     <div className="lg:flex lg:items-center lg:justify-between mt-10">
       <div className="min-w-0 flex-1">
         <h1 className="text-5xl font-bold leading-7 text-gray-900 sm:truncate sm:text-5xl sm:tracking-tight">
-          {title}
+          {list.title}
         </h1>
         <div className="flex flex-col sm:mt-3 sm:flex-row sm:flex-wrap sm:space-x-6">
           <p className="text-sm text-gray-500 w-10/12 sm:w-100">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio
-            minima repellendus quibusdam recusandae alias sit! Placeat qui et
-            quibusdam, eligendi provident aliquam.
+            {list.description ? list.description : "Enter Description"}
           </p>
         </div>
       </div>

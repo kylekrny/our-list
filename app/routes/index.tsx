@@ -1,17 +1,18 @@
 import type { ActionArgs } from "@remix-run/node";
 import { redirect } from "@remix-run/node";
 import { Form } from "@remix-run/react";
-import createList from "~/models/list.server";
+import { createList } from "~/models/list.server";
 
 
   export const action = async ({ request }: ActionArgs) => {
     const formData = await request.formData();
 
-    const listName = formData.get("list_name");
+    const title = formData.get("list_title");
 
-    const slug = await createList({ listName });
+    const data = await createList({ title })
 
-    return redirect(`/${slug}`)
+    return redirect(`/${data.slug}`)
+
 
   };
 
@@ -76,13 +77,13 @@ export default function Index() {
             <div className="px-3 py-4 sm:p-6">
               <Form method="post" className="flex items-center justify-between">
                 <div className="w-8/12">
-                  <label htmlFor="list_name_input" className="sr-only">
-                    List Name
+                  <label htmlFor="list_title_input" className="sr-only">
+                    List Title
                   </label>
                   <input
                     type="text"
-                    name="list_name"
-                    id="list_name_input"
+                    name="list_title"
+                    id="list_title_input"
                     className="block pt-2 pb-2 pl-2 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     placeholder="Video Ideas"
                   />
