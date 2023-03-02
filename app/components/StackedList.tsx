@@ -1,4 +1,3 @@
-import { ArrowUpIcon, ArrowDownIcon } from "@heroicons/react/20/solid";
 import StackedListItem from "./StackedListItem";
 
 const positions = [
