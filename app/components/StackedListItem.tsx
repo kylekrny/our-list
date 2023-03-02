@@ -27,6 +27,7 @@ export default function StackedListItem({listItem, idx}: {listItem: ListItem, id
     const fetcher = useFetcher();
 
     useEffect(() => {
+      if (fetcher.type === "done" && fetcher.data)
         setListItemState({
             ...listItemState,
             ...fetcher.data,

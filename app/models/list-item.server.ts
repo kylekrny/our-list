@@ -11,6 +11,9 @@ export async function createListItem(listItem: ListItem) {
 }
 
 
-export async function updateVotes() {
-    return prisma.listItem.update
+export async function updateVotes(id: number, increase: boolean) {
+    const numId = Number(id)
+    const votesValue = increase ? {increment: 1} : {decrement: 1}
+
+    return prisma.listItem.update({where: { id: numId }, data: {votes: votesValue}})
 }
