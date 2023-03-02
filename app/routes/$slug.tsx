@@ -17,12 +17,13 @@ export const loader = async ({ params }: LoaderArgs) => {
 
 export default function ListSlug() {
   const { list } = useLoaderData<typeof loader>();
+  console.log(list);
   return (
     <>
     <Navigation/>
     <div className="container mx-auto sm:px-6 lg:px-8">
       <ListHeader list={list} />
-      <StackedList />
+      <StackedList listItems={list.listItems} />
     </div>
     </>
   );

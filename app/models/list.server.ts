@@ -25,6 +25,6 @@ export async function createList(data: List) {
 
 
 export async function getList(slug: string) {
-  return prisma.list.findUnique({where: { slug }})
+  return prisma.list.findUnique({where: { slug }, include: {listItems: true}})
 }
 

@@ -40,7 +40,7 @@ export default function ListHeader({list}: List) {
             Create Idea
           </button>
           <Modal open={createItemModalOpen} setOpen={toggleModal}>
-            <CreateItemForm setOpen={toggleModal}/>
+            <CreateItemForm setOpen={toggleModal} slug={list.slug}/>
           </Modal>
         </span>
       </div>

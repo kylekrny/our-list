@@ -1,6 +1,5 @@
 import type { ActionArgs } from "@remix-run/node";
 
-
 export const action = async ({ request }: ActionArgs) => {
   const formData = await request.formData();
 

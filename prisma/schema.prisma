@@ -23,7 +23,7 @@ model ListItem {
   id Int @id @default(autoincrement())
   title String @unique
   description String
-  votes Int
+  votes Int @default(0)
   list List @relation(fields: [listId], references: [slug])
   listId String
 }

@@ -1,4 +1,6 @@
+import { ListItem } from "@prisma/client";
 import StackedListItem from "./StackedListItem";
+
 
 const positions = [
   {
@@ -25,11 +27,11 @@ const positions = [
   },
 ];
 
-export default function StackedList() {
+export default function StackedList({listItems}: {listItems: Array<ListItem> }) {
   return (
     <div className="overflow-hidden bg-white shadow sm:rounded-md mt-10">
       <ul className="divide-y divide-gray-200">
-        {positions.map((listItem, idx) => (
+        {listItems.map((listItem, idx) => (
             <StackedListItem listItem={listItem} idx={idx}  key={listItem.id}/>
         ))}
       </ul>
