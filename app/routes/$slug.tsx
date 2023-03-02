@@ -17,7 +17,6 @@ export const loader = async ({ params }: LoaderArgs) => {
 
 export default function ListSlug() {
   const { list } = useLoaderData<typeof loader>();
-  console.log(list);
   return (
     <>
     <Navigation/>

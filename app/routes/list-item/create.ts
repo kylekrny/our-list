@@ -14,10 +14,8 @@ export const action = async ({ request }: ActionArgs) => {
     listId: slug,
   }
 
-  createListItem(listItem).then((res) => {
-    return res
-  }).catch(err => {
-    throw new Error("failed to create List Item")
-  })
+  const data = await createListItem(listItem)
+
+  return data
 
 };
