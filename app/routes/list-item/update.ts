@@ -8,7 +8,6 @@ export const action = async ({ request }: ActionArgs) => {
   const downVote = formData.get("down-vote");
 
   if (upVote) {
-    console.log("this works")
     return {upVote: true};
   } else if (downVote) {
     return {downVote: true};

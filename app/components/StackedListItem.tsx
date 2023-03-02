@@ -1,6 +1,5 @@
 import { useEffect, useState} from "react";
 import { ArrowUpIcon, ArrowDownIcon } from "@heroicons/react/20/solid";
-import { Form } from "@remix-run/react";
 import { useFetcher } from "@remix-run/react";
 interface Tag {
     id: string;
@@ -33,8 +32,6 @@ export default function StackedListItem({listItem, idx}: {listItem: ListItem, id
             ...fetcher.data,
         })
     }, [fetcher])
-
-    console.log(listItemState);
     
     return (
       <li key={listItem.id}>
@@ -62,7 +59,7 @@ export default function StackedListItem({listItem, idx}: {listItem: ListItem, id
                 <ArrowUpIcon className="mr-1 h-5 w-5 flex-shrink-0 text-gray-400 hover:text-green-500" />
               </button>
               <p className="flex items-center text-sm text-gray-500">
-                {numberFormatter(listItem.votes)}
+                {numberFormatter(listItemState.votes)}
               </p>
               <button type="submit" name="down-vote" value={listItem.id}>
                 <ArrowDownIcon className=" ml-1 h-5 w-5 flex-shrink-0 text-gray-400 hover:text-rose-600" />
