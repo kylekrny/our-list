@@ -16,6 +16,5 @@ export const action = async ({ request }: ActionArgs) => {
 
   const data = await createListItem(listItem)
 
-  return data
-
+  return data;
 };

@@ -7,7 +7,13 @@ type ListItem = {
 }
 
 export async function createListItem(listItem: ListItem) {
-  return prisma.listItem.create({ data: listItem });
+  const listItemCount =  await prisma.listItem.count({where: {listId: listItem.listId}})
+ 
+  if (listItemCount < 100) {
+    return prisma.listItem.create({ data: listItem });
+  } else {
+    throw new Error("you have reached the max number of list items.")
+  }
 }
 
 
