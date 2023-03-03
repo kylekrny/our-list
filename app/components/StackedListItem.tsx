@@ -1,6 +1,7 @@
 import { useEffect, useState} from "react";
 import { ArrowUpIcon, ArrowDownIcon } from "@heroicons/react/20/solid";
 import { useFetcher } from "@remix-run/react";
+import { createCookie } from "@remix-run/node";
 interface Tag {
     id: string;
     name: string;
@@ -15,6 +16,7 @@ interface ListItem {
 }
 
 
+
 const numberFormatter = (number: number) => {
 
   return new Intl.NumberFormat("en-US", { maximumSignificantDigits: 3 }).format(
@@ -24,7 +26,33 @@ const numberFormatter = (number: number) => {
 
 export default function StackedListItem({listItem, idx}: {listItem: ListItem, idx: number}) {
     const [listItemState, setListItemState] = useState(listItem)
+    const [vote, setVote] = useState(0);
     const fetcher = useFetcher();
+
+    const writeVoteToLocalStorage = (vote: boolean) => {
+      localStorage.setItem(
+        `${listItemState.id}`,
+        vote
+        );
+        vote ? setVote(1) : setVote(-1);
+    };
+
+    useEffect(() => {
+      if (listItemState.id) {
+        const lsResult = localStorage.getItem(listItemState.id)
+
+        if (lsResult) {
+          if (lsResult === "true") {
+            setVote(1)
+          } else if (lsResult === "false") {
+            setVote(-1)
+          }
+        }
+      }
+    }, [])
+    
+
+
 
     useEffect(() => {
       if (fetcher.type === "done" && fetcher.data)
@@ -56,14 +84,27 @@ export default function StackedListItem({listItem, idx}: {listItem: ListItem, id
               method="put"
               className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0"
             >
-              <button type="submit" name="up-vote" value={listItem.id}>
-                <ArrowUpIcon className="mr-1 h-5 w-5 flex-shrink-0 text-gray-400 hover:text-green-500" />
+              <button
+                type="submit"
+                name="up-vote"
+                className="mr-1 h-5 w-5 flex-shrink-0 text-gray-400 hover:text-green-500 disabled:text-green-500"
+                onClick={() => writeVoteToLocalStorage(true)}
+                value={listItem.id}
+              >
+                <ArrowUpIcon />
               </button>
               <p className="flex items-center text-sm text-gray-500">
                 {numberFormatter(listItemState.votes)}
               </p>
-              <button type="submit" name="down-vote" value={listItem.id}>
-                <ArrowDownIcon className=" ml-1 h-5 w-5 flex-shrink-0 text-gray-400 hover:text-rose-600" />
+              <button
+                type="submit"
+                disabled={vote === -1}
+                name="down-vote"
+                onClick={() => writeVoteToLocalStorage(false)}
+                value={listItem.id}
+                className="disabled:text-rose-600 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 hover:text-rose-600"
+              >
+                <ArrowDownIcon />
               </button>
             </fetcher.Form>
           </div>
