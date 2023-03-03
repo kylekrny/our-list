@@ -20,11 +20,11 @@ export default function ListHeader({list}: List) {
         <h1 className="text-5xl font-bold leading-7 text-gray-900 sm:truncate sm:text-5xl sm:tracking-tight">
           {list.title}
         </h1>
-        <div className="flex flex-col sm:mt-3 sm:flex-row sm:flex-wrap sm:space-x-6">
+        {/* <div className="flex flex-col sm:mt-3 sm:flex-row sm:flex-wrap sm:space-x-6">
           <p className="text-sm text-gray-500 w-10/12 sm:w-100">
             {list.description ? list.description : "Enter Description"}
           </p>
-        </div>
+        </div> */}
       </div>
       <div className="mt-5 flex lg:mt-0 lg:ml-4">
         <span className="hidden sm:block">
