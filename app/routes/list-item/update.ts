@@ -10,10 +10,10 @@ export const action = async ({ request }: ActionArgs) => {
 
   if (upVote) {
     let value = await updateVotes(upVote, true)
-    return value;
+    return value
   } else if (downVote) {
     let value = await updateVotes(downVote, false);
-    return value;
+    return value
   } else {
     throw new Error("vote not counted")
   }

@@ -26,30 +26,9 @@ const numberFormatter = (number: number) => {
 
 export default function StackedListItem({listItem, idx}: {listItem: ListItem, idx: number}) {
     const [listItemState, setListItemState] = useState(listItem)
-    const [vote, setVote] = useState(0);
     const fetcher = useFetcher();
 
-    const writeVoteToLocalStorage = (vote: boolean) => {
-      localStorage.setItem(
-        `${listItemState.id}`,
-        vote
-        );
-        vote ? setVote(1) : setVote(-1);
-    };
 
-    useEffect(() => {
-      if (listItemState.id) {
-        const lsResult = localStorage.getItem(listItemState.id)
-
-        if (lsResult) {
-          if (lsResult === "true") {
-            setVote(1)
-          } else if (lsResult === "false") {
-            setVote(-1)
-          }
-        }
-      }
-    }, [])
     
 
 
@@ -88,7 +67,6 @@ export default function StackedListItem({listItem, idx}: {listItem: ListItem, id
                 type="submit"
                 name="up-vote"
                 className="mr-1 h-5 w-5 flex-shrink-0 text-gray-400 hover:text-green-500 disabled:text-green-500"
-                onClick={() => writeVoteToLocalStorage(true)}
                 value={listItem.id}
               >
                 <ArrowUpIcon />
@@ -98,9 +76,7 @@ export default function StackedListItem({listItem, idx}: {listItem: ListItem, id
               </p>
               <button
                 type="submit"
-                disabled={vote === -1}
                 name="down-vote"
-                onClick={() => writeVoteToLocalStorage(false)}
                 value={listItem.id}
                 className="disabled:text-rose-600 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 hover:text-rose-600"
               >
