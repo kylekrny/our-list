@@ -69,7 +69,7 @@ export default function Index() {
             Bring your community together. Bring the best ideas to light.
           </h1>
           <p className="mt-6 text-lg leading-8 text-gray-600">
-            By bringing everybody into the discussion, allows for the best ideas
+            By bringing everybody into the discussion, we allow for the best ideas
             to come to light. Everybody gets a vote and more importantly a
             voice.
           </p>
