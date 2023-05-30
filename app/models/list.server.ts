@@ -12,15 +12,14 @@ const titleToSlugConverter = (title: string) => {
 
 export async function createList(data: List) {
   const { title } = data;
-
   const slug = titleToSlugConverter(title);
 
   const list = {
     slug,
     title,
   }
-
-  return prisma.list.create({ data: list });
+  
+  return prisma.list.create({ data: list })
 }
 
 

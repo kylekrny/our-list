@@ -1,23 +1,17 @@
-import type { ActionArgs } from "@remix-run/node";
+import { ActionArgs } from "@remix-run/node";
 import { redirect } from "@remix-run/node";
 import { Form } from "@remix-run/react";
 import { createList } from "~/models/list.server";
 
-
   export const action = async ({ request }: ActionArgs) => {
     const formData = await request.formData();
-
     const title = formData.get("list_title");
 
-    const data = await createList({ title })
-
-    return redirect(`/${data.slug}`)
-
-
+    const list = await createList({ title })
+    return redirect(`/${list.slug}`)
   };
 
 export default function Index() {
-
   return (
     <div className="relative isolate overflow-hidden bg-white">
       <svg
